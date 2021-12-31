@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeCell : MonoBehaviour
-{
+public class MazeCell { 
+
     public bool hasVisited = false;
 
     public GameObject upWall;
