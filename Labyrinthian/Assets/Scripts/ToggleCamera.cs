@@ -40,13 +40,13 @@ public class ToggleCamera : MonoBehaviour
     void TopDown()
     {
         status = 0;
-        anim.Play("ToggleOff");
+        anim.Play("FirstPerson");
     }
 
     void FirstPerson()
     {
         status = 2;
-        anim.Play("ToggleOn");
+        anim.Play("TopDown");
     }
 
 
