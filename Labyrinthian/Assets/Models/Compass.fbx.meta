@@ -1,8 +1,20 @@
 fileFormatVersion: 2
-guid: 05efcfac47c5da749b42d6ab9fa77a54
+guid: ea56e38f9ca215549a9ef236f8c7d6b2
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 3272275027289161798
+    second: Arrow|ArrowAction
+  - first:
+      74: 4919038203182133473
+    second: Arrow|PinAction
+  - first:
+      74: -7308559931552233801
+    second: Pin|ArrowAction
+  - first:
+      74: -5805551500303201913
+    second: Pin|PinAction
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -34,7 +46,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -44,7 +56,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
@@ -81,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

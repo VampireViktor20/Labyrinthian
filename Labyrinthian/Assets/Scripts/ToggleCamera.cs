@@ -6,7 +6,7 @@ public class ToggleCamera : MonoBehaviour
 {
     public Animator anim;
     public bool toggle;
-    private int status;
+    public int status;
 
     void Start()
     {

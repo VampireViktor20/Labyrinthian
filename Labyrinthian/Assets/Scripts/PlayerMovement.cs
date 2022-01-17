@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed;
     public bool isRunning;
+    public GameObject compass;
+    public bool usingCompass;
+    
 
     void Update()
     {
@@ -25,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
             Run();
         }
 
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            usingCompass = !usingCompass;
+            Compass();
+        }
+
     }
 
     void Run()
@@ -38,4 +47,18 @@ public class PlayerMovement : MonoBehaviour
             speed = 6f;
         }
     }
+
+    public void Compass()
+    {
+        if(usingCompass)
+        {
+            compass.SetActive(true);
+        }
+        
+        if(!usingCompass)
+        {
+            compass.SetActive(false);
+        }
+    }
+    
 }
