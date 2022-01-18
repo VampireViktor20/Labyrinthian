@@ -10,29 +10,30 @@ public class Memory : MonoBehaviour
     public PlayerMovement player;
     public GameObject memoryEffect;
     public Animator anim;
-    void Update()
+
+    void Start()
     {
         anim.GetComponent<Animator>();
 
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(MemoryAdded());
-        }
+        
     }
 
-    IEnumerator MemoryAdded()
+    public IEnumerator MemoryAdded()
     {
-        yield return new WaitForSeconds(0.2f);
-        anim.Play("MemoryUpdate");
+        
         memoryButton.SetActive(true);
         Instantiate(memoryEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
         examine.GetComponent<Examine>().onExamine = false;
         player.enabled = true;
-      
-        
-        
-      
-        
+        gameObject.SetActive(false);
+        anim.SetBool("MemoryUpdate", true);
+        yield return new WaitForSeconds(3f);
+        anim.SetBool("MemoryUpdate", false);
+        Destroy(gameObject);
+
+
+
+
+
     }
 }

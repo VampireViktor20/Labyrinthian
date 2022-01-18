@@ -7,7 +7,7 @@ public class Examine : MonoBehaviour
 {
     public float distance;
     public Transform playerSocket;
-
+    public Memory memory;
 
     Vector3 originalPos;
     public  bool onExamine = false;
@@ -29,6 +29,7 @@ public class Examine : MonoBehaviour
                 {
                     examined = hit.transform.gameObject;
                     originalPos = hit.transform.position;
+                    memory = hit.transform.gameObject.GetComponent<Memory>();
                     onExamine = true;
            
 
@@ -39,7 +40,11 @@ public class Examine : MonoBehaviour
 
         if(onExamine)
         {
-
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                StartCoroutine(memory.MemoryAdded());
+                memory = null;
+            }
             playerSocket.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * 350f);
             examined.transform.position = Vector3.Lerp(examined.transform.position, playerSocket.position, 0.2f);
             
