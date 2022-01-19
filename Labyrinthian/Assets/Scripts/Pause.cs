@@ -8,6 +8,7 @@ public class Pause : MonoBehaviour
 
     public static bool isPaused = false;
     public GameObject pauseUI;
+    public GameObject Diary;
 
 
     void Update()
@@ -17,14 +18,19 @@ public class Pause : MonoBehaviour
             if(isPaused)
             {
                 Resume();
+                Diary.SetActive(true);
             }
             else
             {
                 Paused();
+                Diary.SetActive(false);
             }
         }
 
-        
+        if(isPaused == false)
+        {
+            Cursor.visible = false;
+        }
     }
 
     public void Resume()
@@ -32,6 +38,7 @@ public class Pause : MonoBehaviour
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         isPaused = false;
     }
 

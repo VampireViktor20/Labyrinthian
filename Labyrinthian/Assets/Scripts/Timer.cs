@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Maze maze;
-    public float timeValue = 5f;
+    public float timeValue;
+    public float extraTime = 30f;
     public Text timer;
 
     void Start()
@@ -23,7 +24,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            timeValue += 6f;
+            timeValue += 301f;
             maze.Regenerate();
         }
         DisplayTimer(timeValue);

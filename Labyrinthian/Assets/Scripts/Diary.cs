@@ -8,10 +8,16 @@ public class Diary : MonoBehaviour
     public GameObject diaryUI;
     public bool usingDiary;
     public PlayerCamera playercam;
+    public PlayerMovement player;
 
-    // Update is called once per frame
+    void Start()
+    {
+        diaryUI.SetActive(false);
+    }
+
     void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             usingDiary = !usingDiary;
@@ -21,20 +27,21 @@ public class Diary : MonoBehaviour
         {
             DiaryOpen();
             Cursor.visible = true;
-
             playercam.enabled = false;
+            player.enabled = false;
         }
         else
         {
             DiaryClosed();
             Cursor.visible = false;
             playercam.enabled = true;
+            player.enabled = true;
         }
     }
 
     void DiaryOpen()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         diaryUI.SetActive(true);
     }
 
@@ -42,5 +49,6 @@ public class Diary : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         diaryUI.SetActive(false);
+
     }
 }

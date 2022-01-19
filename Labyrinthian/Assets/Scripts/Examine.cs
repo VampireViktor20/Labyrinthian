@@ -8,6 +8,8 @@ public class Examine : MonoBehaviour
     public float distance;
     public Transform playerSocket;
     public Memory memory;
+    public GameObject interactIcon;
+    public GameObject MemoryText;
 
     Vector3 originalPos;
     public  bool onExamine = false;
@@ -25,8 +27,10 @@ public class Examine : MonoBehaviour
         {
             if(hit.transform.tag == "Memory" && !onExamine)
             {
+                interactIcon.SetActive(true);
                 if(Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    MemoryText.SetActive(true);
                     examined = hit.transform.gameObject;
                     originalPos = hit.transform.position;
                     memory = hit.transform.gameObject.GetComponent<Memory>();
@@ -36,6 +40,10 @@ public class Examine : MonoBehaviour
                     StartCoroutine(pickupItem());
                 }
             }
+            else
+            {
+                interactIcon.SetActive(false);
+            }
         }
 
         if(onExamine)
@@ -43,6 +51,7 @@ public class Examine : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 StartCoroutine(memory.MemoryAdded());
+                MemoryText.SetActive(false);
                 memory = null;
             }
             playerSocket.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * 350f);
@@ -59,6 +68,7 @@ public class Examine : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse1) && onExamine)
         {
+            MemoryText.SetActive(false);
             StartCoroutine(dropItem());
             onExamine = false;
         }
@@ -69,6 +79,7 @@ public class Examine : MonoBehaviour
             player.enabled = false;
             yield return new WaitForSeconds(0.2f);
             examined.transform.SetParent(playerSocket);
+
         }
 
         IEnumerator dropItem()
@@ -76,7 +87,6 @@ public class Examine : MonoBehaviour
             examined.transform.rotation = Quaternion.identity;
             yield return new WaitForSeconds(0.2f);
             player.enabled = true;
-
         }
            
     }

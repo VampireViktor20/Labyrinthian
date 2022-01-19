@@ -10,6 +10,7 @@ public class Memory : MonoBehaviour
     public PlayerMovement player;
     public GameObject memoryEffect;
     public Animator anim;
+    public Timer timer;
 
     void Start()
     {
@@ -17,12 +18,13 @@ public class Memory : MonoBehaviour
 
         
     }
-
+   
     public IEnumerator MemoryAdded()
     {
         
         memoryButton.SetActive(true);
         Instantiate(memoryEffect, transform.position, Quaternion.identity);
+        timer.timeValue += 30;
         examine.GetComponent<Examine>().onExamine = false;
         player.enabled = true;
         gameObject.SetActive(false);
